@@ -85,7 +85,7 @@ export function run(input) {
       let kind = END;
       if (nc !== -1 && nc < j) { j = nc; kind = COMMA; }
       if (nn !== -1 && nn < j) { j = nn; kind = LINE_BREAK; }
-      if (nr !== -1 && nr < j) { j = nr; kind = 4; }
+      if (nr !== -1 && nr < j) { j = nr; kind = CR_HIT; }
       if (kind === COMMA) {
         keep(j);
         pos = j + 1;
@@ -97,7 +97,7 @@ export function run(input) {
         line += 1;
         return finish(LINE_BREAK);
       }
-      if (kind === 4) {
+      if (kind === CR_HIT) {
         if (text[j + 1] === "\n") {
           keep(j);
           pos = j + 2;
